@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import TextContent from './textContent';
+import { CounterComponent } from './counterComponent';
 
 function App() {
+  const handler = () => {
+    console.log('on click');
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <TextContent />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CounterComponent title={'Апельсин'} count={8} />
+      <CounterComponent title={'Яблоки'} count={28}/>
+      <CounterComponent title={'Сок'} />
+      <button onClick={handler}>Push me</button>
     </div>
   );
 }
