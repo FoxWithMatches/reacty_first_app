@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { CounterComponent } from './counterComponent';
+import { Input } from './input';
 
 function App() {
   const handler = () => {
@@ -13,6 +14,7 @@ function App() {
       <CounterComponent title={'Яблоки'} count={28}/>
       <CounterComponent title={'Сок'} />
       <button onClick={handler}>Push me</button>
+      <Input />
     </div>
   );
 }

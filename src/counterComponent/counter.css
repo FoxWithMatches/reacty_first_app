@@ -7,5 +7,11 @@
     border: 1px solid #212121;
     border-radius: 12px;
     padding: 0 16px;
+}
 
+.counter-group {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
 }
