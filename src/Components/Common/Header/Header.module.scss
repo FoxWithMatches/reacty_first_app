@@ -14,5 +14,9 @@
      &_title {
         color: rgb(42, 95, 100);
     }
+    & > ul {
+        display: flex;
+        gap: 18px;
+    }
 }
 
