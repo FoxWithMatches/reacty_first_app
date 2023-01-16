@@ -1,0 +1,18 @@
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+    background-color: aqua;
+
+    &_logo {
+        color: red;
+        font-size: 20px;
+    }
+    
+     &_title {
+        color: rgb(42, 95, 100);
+    }
+}
+

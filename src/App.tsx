@@ -1,21 +1,15 @@
+import { Main } from 'Containers/Main';
+import { Posts } from 'Containers/Posts';
+import { routes } from 'Helpers/Constants/routes';
 import React from 'react';
-import './App.css';
-import { CounterComponent } from './counterComponent';
-import { Input } from './input';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const handler = () => {
-    console.log('on click');
-  }
-
   return (
-    <div className="App">
-      <CounterComponent title={'Апельсин'} count={8} />
-      <CounterComponent title={'Яблоки'} count={28}/>
-      <CounterComponent title={'Сок'} />
-      <button onClick={handler}>Push me</button>
-      <Input />
-    </div>
+    <Routes>
+      <Route path={routes.main} element={<Main />} />
+      <Route path={routes.posts} element={<Posts />} />
+    </Routes>
   );
 }
 

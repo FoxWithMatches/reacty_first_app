@@ -1,0 +1,13 @@
+.wrapper {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    color: tomato;
+
+    .text {
+        font-size: 25px;
+        color: black;
+    }
+}
