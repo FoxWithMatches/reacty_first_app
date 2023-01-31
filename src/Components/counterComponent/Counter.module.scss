@@ -1,4 +1,4 @@
-.counter-wrapper {
+.counter_wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,9 +7,10 @@
     border: 1px solid #212121;
     border-radius: 12px;
     padding: 0 16px;
+    margin: 20px auto;
 }
 
-.counter-group {
+.counter_group {
     display: flex;
     width: 250px;
     justify-content: space-between;

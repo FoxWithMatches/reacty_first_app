@@ -15,10 +15,10 @@ export const Header = () => {
           <Link to={routes.posts}>Work</Link>
         </li>
         <li>
-          <Link to="/about">Главная</Link>
+          <Link to={routes.counter}>Главная</Link>
         </li>
       </ul>
-      <span className={style.header_title}>App_name</span>
+      <Link to={routes.auth}>Auth</Link>
     </header>
   );
 };
