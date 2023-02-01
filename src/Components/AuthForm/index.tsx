@@ -39,6 +39,7 @@ export const AuthForm = () => {
         name={'Password'}
         value={formState.password}
         changeHandler={changeHandler('password')}
+        type='password'
       />
 
       {errorMessage !== '' && <div className={style.error}>{errorMessage}</div>}
