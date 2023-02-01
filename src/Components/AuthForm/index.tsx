@@ -1,10 +1,10 @@
 import { Inputs } from 'Components/Common/Inputs';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, useEffect } from 'react';
 import style from './AuthForm.module.scss';
 
 export const AuthForm = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [errorMessage, setErrorMessage = useState(' ');
+  const [errorMessage, setErrorMesage] = useState('');
 
   const changeHandler =
     (fieldNAme: 'email' | 'password') => (event: ChangeEvent<HTMLInputElement>) => {
@@ -16,8 +16,21 @@ export const AuthForm = () => {
     };
 
   const submitHandler = () => {
-    console.log(formState, 'push on a server');
+    if (formState.password.length < 5) {
+      setErrorMesage('password is short');
+    } else {
+      setErrorMesage('');
+      console.log(formState, 'push on a server');
+    }
   };
+
+  useEffect(() => {
+    if (formState.password.length < 5 && formState.password !== '') {
+      setErrorMesage('password is short');
+    } else {
+      setErrorMesage('');
+    }
+  }, [formState.password]);
   return (
     <div className={style.wrapper}>
       <h1>Auth form</h1>
@@ -28,7 +41,7 @@ export const AuthForm = () => {
         changeHandler={changeHandler('password')}
       />
 
-      {/* {errorMessage !== '' && <div>{errorMessage}</div>} */}
+      {errorMessage !== '' && <div className={style.error}>{errorMessage}</div>}
 
       <button type="button" onClick={submitHandler}>
         Auth
