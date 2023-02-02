@@ -1,10 +1,14 @@
 import { Inputs } from 'Components/Common/Inputs';
 import React, { ChangeEvent, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { userSliceActions } from 'Store';
 import style from './AuthForm.module.scss';
 
 export const AuthForm = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMesage] = useState('');
+
+  const dispatch = useDispatch();
 
   const changeHandler =
     (fieldNAme: 'email' | 'password') => (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +24,12 @@ export const AuthForm = () => {
       setErrorMesage('password is short');
     } else {
       setErrorMesage('');
+      dispatch(userSliceActions.setUserLoading(true))
+
+      setTimeout(
+        () => dispatch(userSliceActions.setUserData({ email: formState.email, token: '123' })),
+        3000,
+      );
       console.log(formState, 'push on a server');
     }
   };
@@ -39,7 +49,7 @@ export const AuthForm = () => {
         name={'Password'}
         value={formState.password}
         changeHandler={changeHandler('password')}
-        type='password'
+        type="password"
       />
 
       {errorMessage !== '' && <div className={style.error}>{errorMessage}</div>}

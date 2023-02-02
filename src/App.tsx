@@ -1,3 +1,4 @@
+import { PageWrapper } from 'Components/Common/PageWrapper';
 import { Auth } from 'Containers/Auth';
 import { Counter } from 'Containers/Counter';
 import { Main } from 'Containers/Main';
@@ -13,11 +14,13 @@ function App() {
   }, []);
   return (
     <Routes>
-      <Route path={routes.main} element={<Main />} />
-      <Route path={routes.posts} element={<Posts />} />
-      <Route path={routes.notFound} element={<NotFound />} />
-      <Route path={routes.counter} element={<Counter />} />
-      <Route path={routes.auth} element={<Auth />} />
+      <Route path={routes.main} element={<PageWrapper />}>
+        <Route index element={<Main />} />
+        <Route path={routes.posts} element={<Posts />} />
+        <Route path={routes.notFound} element={<NotFound />} />
+        <Route path={routes.counter} element={<Counter />} />
+        <Route path={routes.auth} element={<Auth />} />
+      </Route>
     </Routes>
   );
 }
