@@ -1,21 +1,16 @@
-import { CheckAuth } from 'Components/Common/CheckAuth';
 import { PostList } from 'Components/Posts';
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { PostsEffects, PostsSelectors } from 'Store';
 
 export const Posts = () => {
+  const loading = useSelector(PostsSelectors.getPostLoading);
+  const dispatch = useDispatch();
+  const data = useSelector(PostsSelectors.getPostData);
+
   useEffect(() => {
-    const handler = () => console.log('click on post page');
-    document.addEventListener('click', handler);
-    console.log('post mount');
-    return () => {
-      document.removeEventListener('click', handler);
-      console.log('post UNmount');
-    };
+    dispatch(PostsEffects.fetchPosts());
   }, []);
 
-  return (
-    <CheckAuth>
-      <PostList />
-    </CheckAuth>
-  );
+  return loading ? <h1>Loading...</h1> : <PostList postdata={data}/>;
 };

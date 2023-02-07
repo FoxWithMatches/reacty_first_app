@@ -1,18 +1,22 @@
-import { routes } from 'Helpers/Constants/routes';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import style from './PostsList.module.scss'
 
-export const PostList = () => {
+import { OnePostType } from 'Store/Posts/type';
+import { OnePost } from './OnePost';
+import style from './PostsList.module.scss';
+
+type PostListPropsType = {
+  postdata: OnePostType[];
+};
+
+export const PostList = ({ postdata }: PostListPropsType) => {
+  console.log(postdata, 'postdata');
+
   return (
     <main className={style.wrapper}>
-      <h1>Posts</h1>
-      <p>post 1</p>
-      <p>post 2</p>
-      <p>post 3</p>
-      <p>post 4</p>
-      <p>post 5</p>
-      <Link to={routes.main}>go to main</Link>
+      <h1>post</h1>
+      {postdata.map((el) => (
+        <OnePost key={el.id} title={el.title} body={el.body} id={el.id}/>
+      ))}
     </main>
   );
 };
